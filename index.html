@@ -4,8 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>虛擬電腦組裝 · 3D 裝機模擬</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-<p>placeholder — replacing next</p>
+<header>
+  <h1>虛擬電腦組裝 <span>3D 裝機模擬</span></h1>
+  <div class="badge">示意模型 · 可自訂裝機順序 · 唔係廠商 CAD</div>
+</header>
+<main>
+  <aside>
+    <div class="cats" id="cats"></div>
+    <div class="search"><input id="q" placeholder="搜尋零件…" /></div>
+    <div class="parts" id="parts"></div>
+  </aside>
+  <section class="stage">
+    <div class="stage-top">
+      <div class="tools">
+        <button class="tool" id="presetMid">1440p 參考配置</button>
+        <button class="tool" id="presetHigh">4K 參考配置</button>
+        <button class="tool" id="clear">清空零件</button>
+      </div>
+      <div class="tools">
+        <button class="tool primary" id="modeFree">自由順序</button>
+        <button class="tool" id="modeGuide">建議順序</button>
+        <button class="tool primary" id="startAsm">開始 3D 裝機</button>
+        <button class="tool" id="prevStep">上一步</button>
+        <button class="tool primary" id="nextStep">安裝／下一步</button>
+        <button class="tool" id="resetAsm">重設流程</button>
+        <button class="tool" id="cableManaged">背線理線</button>
+        <button class="tool" id="cableMessy">前倉亂線</button>
+      </div>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="view3d"></canvas>
+      <div class="hud">
+        <b id="stepTitle">未開始裝機</b>
+        <p id="stepText">預設係自由順序：撲下面步驟或者右邊「安裝」就裝嗲件。只有物理上做唔到先會攔。</p>
+      </div>
+    </div>
+    <div class="steps-bar" id="stepsBar"></div>
+  </section>
+  <div class="right">
+    <div class="stat-grid">
+      <div class="stat"><span>參考總價 USD</span><b id="totalPrice">$0</b></div>
+      <div class="stat"><span>預估負載</span><b id="totalWatt">0 W</b></div>
+      <div class="stat"><span>電源餘裕</span><b id="psuHead">—</b></div>
+      <div class="stat"><span>相容性</span><b id="compatLabel">未完成</b></div>
+    </div>
+    <div id="issues"></div>
+    <div id="build"></div>
+    <p class="meta" style="margin-top:10px">示意 3D，唔係廠商 CAD。功耗 = CPU TDP + GPU TGP/TBP + 70W。</p>
+  </div>
+</main>
+<footer>規格來源：AMD／NVIDIA／Intel 公開頁。價格係美元約數。</footer>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>
